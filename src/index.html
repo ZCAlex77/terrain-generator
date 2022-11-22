@@ -9,17 +9,19 @@
   <script src="./bundle.js" defer></script>
 </head>
 
-<body>
+<body class="flex-center">
   <div class="menu"></div>
-  <div class="setup">
+  <div class="setup flex-center">
     <h1>Please input the size of the canvas.</h1>
-    <div>
-      <label for="rows">Number of rows:</label>
-      <input type="number" name="rows" id="rows" value="54">
-    </div>
-    <div>
-      <label for="columns">Number of columns:</label>
-      <input type="number" name="columns" id="columns" value="100">
+    <div class="flex-center">
+      <div class="flex-center">
+        <label for="rows">Number of rows:</label>
+        <input type="number" name="rows" id="rows" value="50">
+      </div>
+      <div class="flex-center">
+        <label for="columns">Number of columns:</label>
+        <input type="number" name="columns" id="columns" value="100">
+      </div>
     </div>
     <button id="begin">Begin!</button>
   </div>
