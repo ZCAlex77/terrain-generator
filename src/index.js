@@ -8,3 +8,9 @@ const App = (() => {
 
   UI.showOption(document.querySelector('.option-group'), 0);
 })();
+
+/*
+  TODO:
+  - fix bug preventing image backgrounds
+  - fix visual bug (menu arrows)
+*/

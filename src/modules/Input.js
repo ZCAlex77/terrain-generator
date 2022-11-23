@@ -5,7 +5,10 @@ const Input = (() => {
     optionGroups = document.querySelectorAll('.option-group'),
     backgroundChoices = document.querySelectorAll('.background-choice'),
     backgroundColorInput = document.querySelector('#background-color'),
-    backgroundImageInput = document.querySelector('#background-image');
+    backgroundImageInput = document.querySelector('#background-image'),
+    toggleGridInput = document.querySelector('#grid-toggle');
+
+  toggleGridInput.onchange = (ev) => UI.toggleGrid(ev.target.checked);
 
   backgroundChoices.forEach((choice) => {
     choice.onchange = (ev) => {

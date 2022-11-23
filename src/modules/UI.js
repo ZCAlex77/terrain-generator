@@ -7,7 +7,7 @@ const UI = (() => {
   let unit = null;
   let columns = null;
   let rows = null;
-  let showGrid = true;
+  let isGridVisible = false;
 
   const setCanvasBackground = (newBackground) => {
     canvas.style.background = newBackground;
@@ -20,6 +20,11 @@ const UI = (() => {
       (group) => (group.children[0].style.transform = 'rotate(90deg)')
     );
     element.children[0].style.transform = 'rotate(-90deg)';
+  };
+
+  const toggleGrid = (newState) => {
+    isGridVisible = newState;
+    refreshScreen();
   };
 
   const setGridSize = (rowsNum, columnsNum) => {
@@ -35,7 +40,6 @@ const UI = (() => {
   const resizeCanvas = () => {
     canvas.width = unit * columns;
     canvas.height = unit * rows;
-    drawGrid();
   };
 
   const drawGrid = () => {
@@ -56,7 +60,14 @@ const UI = (() => {
     }
   };
 
+  const refreshScreen = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (isGridVisible) drawGrid();
+  };
+
   return {
+    toggleGrid,
+    refreshScreen,
     showOption,
     hideSetupScreen,
     setCanvasBackground,
