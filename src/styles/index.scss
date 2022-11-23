@@ -27,7 +27,7 @@ body {
 }
 
 button,
-input[type='submit'] {
+input:where([type='submit'], [type='color'], [type='radio']) {
   cursor: pointer;
 }
 
@@ -63,8 +63,15 @@ input[type='submit'] {
     width: 90%;
     font-size: 1.3rem;
     background: #444;
-    padding: 5px;
+    padding: 10px;
     display: none;
+
+    input:not([type='radio']) {
+      display: block;
+      margin: 5px 0;
+      width: 100%;
+      font-size: 1.1rem;
+    }
   }
 }
 
@@ -116,4 +123,5 @@ input[type='submit'] {
 
 canvas {
   background: #555;
+  background-size: cover;
 }

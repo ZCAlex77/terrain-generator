@@ -9,6 +9,10 @@ const UI = (() => {
   let rows = null;
   let showGrid = true;
 
+  const setCanvasBackground = (newBackground) => {
+    canvas.style.background = newBackground;
+  };
+
   const showOption = (element, index) => {
     options.forEach((option) => (option.style.display = 'none'));
     options[index].style.display = 'block';
@@ -52,7 +56,13 @@ const UI = (() => {
     }
   };
 
-  return { showOption, hideSetupScreen, setGridSize, resizeCanvas };
+  return {
+    showOption,
+    hideSetupScreen,
+    setCanvasBackground,
+    setGridSize,
+    resizeCanvas,
+  };
 })();
 
 export default UI;

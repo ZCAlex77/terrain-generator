@@ -2,7 +2,38 @@ import UI from './UI';
 
 const Input = (() => {
   const setupButton = document.querySelector('#begin'),
-    optionGroups = document.querySelectorAll('.option-group');
+    optionGroups = document.querySelectorAll('.option-group'),
+    backgroundChoices = document.querySelectorAll('.background-choice'),
+    backgroundColorInput = document.querySelector('#background-color'),
+    backgroundImageInput = document.querySelector('#background-image');
+
+  backgroundChoices.forEach((choice) => {
+    choice.onchange = (ev) => {
+      switch (ev.target.value) {
+        case 'color':
+          backgroundImageInput.disabled = true;
+          backgroundColorInput.disabled = false;
+          break;
+        case 'image':
+          backgroundColorInput.disabled = true;
+          backgroundImageInput.disabled = false;
+      }
+    };
+  });
+
+  backgroundColorInput.onchange = (ev) => {
+    UI.setCanvasBackground(ev.target.value);
+  };
+
+  backgroundImageInput.onchange = (ev) => {
+    if (/.+\.(png|jpg|gif|jpeg)$/.test(ev.target.value)) {
+      ev.target.setCustomValidity('');
+      UI.setCanvasBackground("url('" + ev.target.value + "')");
+    } else {
+      ev.target.setCustomValidity('File must end in png, jpg or gif');
+      return;
+    }
+  };
 
   optionGroups.forEach((el, i) => {
     el.onclick = (ev) => {
