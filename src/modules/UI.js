@@ -24,7 +24,13 @@ const UI = (() => {
 
   const toggleGrid = (newState) => {
     isGridVisible = newState;
-    refreshScreen();
+  };
+
+  const getGridSize = () => {
+    return {
+      rows,
+      columns,
+    };
   };
 
   const setGridSize = (rowsNum, columnsNum) => {
@@ -60,17 +66,29 @@ const UI = (() => {
     }
   };
 
-  const refreshScreen = () => {
+  const renderCells = (cells) => {
+    for (let i = 0; i < cells.length; i++)
+      for (let j = 0; j < cells[i].length; j++) {
+        ctx.fillStyle = cells[i][j].getColor();
+        let x = i * unit;
+        let y = (rows - j) * unit;
+        ctx.fillRect(x, y, unit, unit);
+      }
+  };
+
+  const renderScreen = (cells = null) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (cells) renderCells(cells);
     if (isGridVisible) drawGrid();
   };
 
   return {
     toggleGrid,
-    refreshScreen,
+    renderScreen,
     showOption,
     hideSetupScreen,
     setCanvasBackground,
+    getGridSize,
     setGridSize,
     resizeCanvas,
   };

@@ -1,4 +1,6 @@
 import UI from './UI';
+import App from '../index';
+import Terrain from './Terrain';
 
 const Input = (() => {
   const setupButton = document.querySelector('#begin'),
@@ -6,9 +8,42 @@ const Input = (() => {
     backgroundChoices = document.querySelectorAll('.background-choice'),
     backgroundColorInput = document.querySelector('#background-color'),
     backgroundImageInput = document.querySelector('#background-image'),
-    toggleGridInput = document.querySelector('#grid-toggle');
+    toggleGridInput = document.querySelector('#grid-toggle'),
+    terrainOptionsForm = document.querySelector('#terrainOptions');
 
-  toggleGridInput.onchange = (ev) => UI.toggleGrid(ev.target.checked);
+  terrainOptionsForm.onsubmit = (ev) => {
+    ev.preventDefault();
+    ev.target.minHeight.setCustomValidity('');
+
+    let minHeight = Number(ev.target.minHeight.value),
+      maxHeight = Number(ev.target.maxHeight.value);
+
+    if (minHeight > maxHeight) {
+      ev.target.minHeight.setCustomValidity(
+        'Minimum height must be lower than maximum height!'
+      );
+      return;
+    }
+
+    const steepness = Number(ev.target.steepness.value),
+      color = ev.target.terrainColor.value,
+      width = UI.getGridSize().columns;
+
+    const newTerrain = Terrain({
+      minHeight,
+      maxHeight,
+      steepness,
+      color,
+      width,
+    });
+
+    App.addTerrain(newTerrain);
+  };
+
+  toggleGridInput.onchange = (ev) => {
+    UI.toggleGrid(ev.target.checked);
+    App.prepareRender();
+  };
 
   backgroundChoices.forEach((choice) => {
     choice.onchange = (ev) => {
@@ -51,6 +86,8 @@ const Input = (() => {
     UI.setGridSize(rows, columns);
     UI.resizeCanvas();
     UI.hideSetupScreen();
+
+    App.generateCells(rows * columns);
   };
 })();
 

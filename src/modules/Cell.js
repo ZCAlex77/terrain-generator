@@ -1,11 +1,10 @@
-const Cell = (index, backgroundColor) => {
-  const getBackgroundColor = () => backgroundColor;
-  const setBackgroundColor = (newColor) => (backgroundColor = newColor);
+const Cell = (backgroundColor) => {
+  const getColor = () => backgroundColor;
+  const setColor = (newColor) => (backgroundColor = newColor);
 
   return {
-    index,
-    getBackgroundColor,
-    setBackgroundColor,
+    getColor,
+    setColor,
   };
 };
 

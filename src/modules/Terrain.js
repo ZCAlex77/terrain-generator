@@ -2,6 +2,7 @@ const Terrain = (options) => {
   const maxPoints = [];
 
   const getMaxPoints = () => maxPoints;
+  const getColor = () => options.color;
 
   const getRandomHeightChange = () => {
     const randomNumber = Math.floor(Math.random() * options.steepness);
@@ -34,5 +35,8 @@ const Terrain = (options) => {
 
   return {
     getMaxPoints,
+    getColor,
   };
 };
+
+export default Terrain;
