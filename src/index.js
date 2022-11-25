@@ -6,7 +6,7 @@ const App = (() => {
   UI.setGridSize('54', '100');
   UI.resizeCanvas();
 
-  UI.showOption(document.querySelector('.option-group'), 0);
+  UI.showOption(document.querySelector('.option-group'), 1);
 })();
 
 /*
