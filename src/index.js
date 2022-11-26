@@ -41,11 +41,21 @@ const App = (() => {
     prepareRender();
   };
 
-  const updateTerrainColor = (terrainId, newColor) => {
-    terrains[
-      terrains.findIndex((terrain) => terrain.getProps('id') === terrainId)
-    ].setColor(newColor);
-    prepareRender();
+  const updateTerrainProps = (terrainId, propValue, prop) => {
+    const targetTerrain =
+      terrains[
+        terrains.findIndex((terrain) => terrain.getProps('id') === terrainId)
+      ];
+
+    switch (prop) {
+      case 'color':
+        targetTerrain.setColor(propValue);
+        prepareRender();
+        break;
+      case 'name':
+        targetTerrain.setName(propValue);
+        break;
+    }
   };
 
   const updateTerrain = (updatedTerrain) => {
@@ -77,7 +87,7 @@ const App = (() => {
   return {
     deleteTerrain,
     updateTerrain,
-    updateTerrainColor,
+    updateTerrainProps,
     prepareRender,
     generateCells,
     addTerrain,

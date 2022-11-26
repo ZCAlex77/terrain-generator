@@ -17,7 +17,14 @@ const Input = (() => {
   let terrainIndex = 0;
   let currentSelection = null;
 
-  const updateSelectInput = (entry, updateType) => {
+  const updateSelectInput = (entry, updateType, updatePayload) => {
+    let targetOption = null;
+
+    if (typeof entry === 'string')
+      targetOption = Array.from(selectInput.children).filter(
+        (el) => el.value === entry
+      )[0];
+
     switch (updateType) {
       case 'add':
         const option = document.createElement('option');
@@ -26,12 +33,11 @@ const Input = (() => {
         selectInput.append(option);
         break;
       case 'remove':
-        const targetOption = Array.from(selectInput.children).filter(
-          (el) => el.value === entry
-        )[0];
         selectInput.value = 'new';
         targetOption.remove();
         break;
+      case 'update':
+        targetOption.textContent = updatePayload;
     }
   };
 
@@ -90,7 +96,13 @@ const Input = (() => {
 
   terrainOptionsForm.terrainColor.onchange = (ev) => {
     if (!currentSelection) return;
-    App.updateTerrainColor(currentSelection, ev.target.value);
+    App.updateTerrainProps(currentSelection, ev.target.value, 'color');
+  };
+
+  terrainOptionsForm.terrainName.onchange = (ev) => {
+    if (!currentSelection) return;
+    App.updateTerrainProps(currentSelection, ev.target.value, 'name');
+    updateSelectInput(currentSelection, 'update', ev.target.value);
   };
 
   selectInput.onchange = handleSelectInputChange;
