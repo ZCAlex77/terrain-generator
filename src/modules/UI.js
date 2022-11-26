@@ -2,12 +2,19 @@ const UI = (() => {
   const canvas = document.querySelector('canvas'),
     ctx = canvas.getContext('2d'),
     optionGroups = document.querySelectorAll('.option-group'),
-    options = document.querySelectorAll('.option');
+    options = document.querySelectorAll('.option'),
+    selectedTerrainOptions = document.querySelectorAll('.terrain-selected');
 
   let unit = null;
   let columns = null;
   let rows = null;
   let isGridVisible = false;
+
+  const toggleSelectedTerrainOptions = (state) => {
+    selectedTerrainOptions.forEach(
+      (option) => (option.style.display = state ? 'block' : 'none')
+    );
+  };
 
   const changeGenerateButtonText = (newText) =>
     (document.querySelector('#generateBtn').value = newText);
@@ -86,6 +93,7 @@ const UI = (() => {
   };
 
   return {
+    toggleSelectedTerrainOptions,
     changeGenerateButtonText,
     toggleGrid,
     renderScreen,

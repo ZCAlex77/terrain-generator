@@ -34,6 +34,13 @@ const App = (() => {
     return terrains.find((terrain) => terrain.getProps('id') === terrainId);
   };
 
+  const deleteTerrain = (terrainId) => {
+    terrains = terrains.filter(
+      (terrain) => terrain.getProps('id') !== terrainId
+    );
+    prepareRender();
+  };
+
   const updateTerrainColor = (terrainId, newColor) => {
     terrains[
       terrains.findIndex((terrain) => terrain.getProps('id') === terrainId)
@@ -68,6 +75,7 @@ const App = (() => {
   generateCells(100 * 54); // to be removed later
 
   return {
+    deleteTerrain,
     updateTerrain,
     updateTerrainColor,
     prepareRender,

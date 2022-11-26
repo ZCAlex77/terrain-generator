@@ -32,6 +32,21 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
   cursor: pointer;
 }
 
+.press-button {
+  padding: 5px;
+  border: 0;
+  transition: transform 0.1s, box-shadow 0.1s;
+
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 0 0 0 #fff;
+  }
+}
+
+.terrain-selected {
+  display: none;
+}
+
 .menu {
   height: 100vh;
   background: #222;
@@ -108,20 +123,22 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
       display: inline-block;
     }
 
-    input[type='submit'] {
-      background: red;
+    input[type='submit'],
+    button {
+      background: green;
       color: #fff;
-      padding: 5px;
-      box-shadow: 2px 2px 2px darkred;
-      border: 0;
-      transition: transform 0.1s, box-shadow 0.1s;
-
-      &:active {
-        box-shadow: 0 0 0 darkred;
-        transform: translate(2px, 2px);
-      }
+      box-shadow: 2px 2px 2px darkgreen;
     }
   }
+}
+
+#deleteTerrainBtn {
+  background: red;
+  color: #fff;
+  width: 100%;
+  box-shadow: 2px 2px darkred;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
 }
 
 .setup {
@@ -158,15 +175,7 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
     background: red;
     color: #fff;
     font-size: 1.6rem;
-    border: 0;
     box-shadow: 2px 2px 2px darkred;
-    transform: translate(0, 0);
-    transition: transform 0.2s, box-shadow 0.2s;
-
-    &:active {
-      transform: translate(2px, 2px);
-      box-shadow: 0 0 0 darkred;
-    }
   }
 }
 

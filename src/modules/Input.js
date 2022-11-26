@@ -11,7 +11,8 @@ const Input = (() => {
     backgroundImageInput = document.querySelector('#background-image'),
     toggleGridInput = document.querySelector('#grid-toggle'),
     terrainOptionsForm = document.querySelector('#terrainOptions'),
-    selectInput = document.querySelector('select');
+    selectInput = document.querySelector('select'),
+    deleteTerrainBtn = document.querySelector('#deleteTerrainBtn');
 
   let terrainIndex = 0;
   let currentSelection = null;
@@ -25,9 +26,10 @@ const Input = (() => {
         selectInput.append(option);
         break;
       case 'remove':
-        const targetOption = selectInput.children.filter(
-          (el) => el.value === entry.id
-        );
+        const targetOption = Array.from(selectInput.children).filter(
+          (el) => el.value === entry
+        )[0];
+        selectInput.value = 'new';
         targetOption.remove();
         break;
     }
@@ -40,6 +42,40 @@ const Input = (() => {
     form.steepness.value = newInputValues.steepness;
     form.terrainColor.value = newInputValues.color;
     form.terrainName.value = newInputValues.name;
+  };
+
+  const handleSelectInputChange = () => {
+    if (selectInput.value === 'new') {
+      currentSelection = null;
+      UI.changeGenerateButtonText('Generate');
+      UI.toggleSelectedTerrainOptions(false);
+      updateTerrainOptions({
+        minHeight: 0,
+        maxHeight: 1,
+        steepness: 50,
+        color: '#000000',
+        name: '',
+      });
+      return;
+    }
+
+    currentSelection = selectInput.value;
+    UI.changeGenerateButtonText('Re-generate');
+    UI.toggleSelectedTerrainOptions(true);
+    const targetTerrain = App.getTerrain(currentSelection);
+    updateTerrainOptions(targetTerrain.getProps());
+  };
+
+  deleteTerrainBtn.onclick = () => {
+    if (!currentSelection) return;
+    const confirmation = window.confirm(
+      'Are you sure you want to delete selected terrain?'
+    );
+    if (confirmation) {
+      App.deleteTerrain(currentSelection);
+      updateSelectInput(currentSelection, 'remove');
+      handleSelectInputChange();
+    }
   };
 
   terrainOptionsForm.maxHeight.onchange = (ev) => {
@@ -57,33 +93,13 @@ const Input = (() => {
     App.updateTerrainColor(currentSelection, ev.target.value);
   };
 
-  selectInput.onchange = (ev) => {
-    if (ev.target.value === 'new') {
-      currentSelection = null;
-      UI.changeGenerateButtonText('Generate');
-      updateTerrainOptions({
-        minHeight: 0,
-        maxHeight: 1,
-        steepness: 50,
-        color: '#000000',
-        name: '',
-      });
-      return;
-    }
-
-    currentSelection = ev.target.value;
-    UI.changeGenerateButtonText('Re-generate');
-    const targetTerrain = App.getTerrain(currentSelection);
-    updateTerrainOptions(targetTerrain.getProps());
-  };
+  selectInput.onchange = handleSelectInputChange;
 
   terrainOptionsForm.onsubmit = (ev) => {
     ev.preventDefault();
 
     let minHeight = Number(ev.target.minHeight.value),
       maxHeight = Number(ev.target.maxHeight.value);
-
-    console.log({ minHeight, maxHeight });
 
     if (minHeight > maxHeight) return;
 
