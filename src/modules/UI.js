@@ -9,6 +9,9 @@ const UI = (() => {
   let rows = null;
   let isGridVisible = false;
 
+  const changeGenerateButtonText = (newText) =>
+    (document.querySelector('#generateBtn').value = newText);
+
   const setCanvasBackground = (newBackground) => {
     canvas.style.background = newBackground;
   };
@@ -83,6 +86,7 @@ const UI = (() => {
   };
 
   return {
+    changeGenerateButtonText,
     toggleGrid,
     renderScreen,
     showOption,

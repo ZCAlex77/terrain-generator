@@ -1,6 +1,7 @@
 import UI from './UI';
 import App from '../index';
-import Terrain from './Terrain';
+import Terrain from '../factories/Terrain';
+import { v4 as uuidv4 } from 'uuid';
 
 const Input = (() => {
   const setupButton = document.querySelector('#begin'),
@@ -9,27 +10,95 @@ const Input = (() => {
     backgroundColorInput = document.querySelector('#background-color'),
     backgroundImageInput = document.querySelector('#background-image'),
     toggleGridInput = document.querySelector('#grid-toggle'),
-    terrainOptionsForm = document.querySelector('#terrainOptions');
+    terrainOptionsForm = document.querySelector('#terrainOptions'),
+    selectInput = document.querySelector('select');
+
+  let terrainIndex = 0;
+  let currentSelection = null;
+
+  const updateSelectInput = (entry, updateType) => {
+    switch (updateType) {
+      case 'add':
+        const option = document.createElement('option');
+        option.value = entry.getProps('id');
+        option.textContent = entry.getProps('name');
+        selectInput.append(option);
+        break;
+      case 'remove':
+        const targetOption = selectInput.children.filter(
+          (el) => el.value === entry.id
+        );
+        targetOption.remove();
+        break;
+    }
+  };
+
+  const updateTerrainOptions = (newInputValues) => {
+    const form = terrainOptionsForm;
+    form.minHeight.value = newInputValues.minHeight;
+    form.maxHeight.value = newInputValues.maxHeight;
+    form.steepness.value = newInputValues.steepness;
+    form.terrainColor.value = newInputValues.color;
+    form.terrainName.value = newInputValues.name;
+  };
+
+  terrainOptionsForm.maxHeight.onchange = (ev) => {
+    const minHeight = Number(terrainOptionsForm.minHeight.value);
+    if (Number(ev.target.value) < minHeight) ev.target.value = minHeight;
+  };
+
+  terrainOptionsForm.minHeight.onchange = (ev) => {
+    const maxHeight = Number(terrainOptionsForm.maxHeight.value);
+    if (Number(ev.target.value) > maxHeight) ev.target.value = maxHeight;
+  };
+
+  terrainOptionsForm.terrainColor.onchange = (ev) => {
+    if (!currentSelection) return;
+    App.updateTerrainColor(currentSelection, ev.target.value);
+  };
+
+  selectInput.onchange = (ev) => {
+    if (ev.target.value === 'new') {
+      currentSelection = null;
+      UI.changeGenerateButtonText('Generate');
+      updateTerrainOptions({
+        minHeight: 0,
+        maxHeight: 1,
+        steepness: 50,
+        color: '#000000',
+        name: '',
+      });
+      return;
+    }
+
+    currentSelection = ev.target.value;
+    UI.changeGenerateButtonText('Re-generate');
+    const targetTerrain = App.getTerrain(currentSelection);
+    updateTerrainOptions(targetTerrain.getProps());
+  };
 
   terrainOptionsForm.onsubmit = (ev) => {
     ev.preventDefault();
-    ev.target.minHeight.setCustomValidity('');
 
     let minHeight = Number(ev.target.minHeight.value),
       maxHeight = Number(ev.target.maxHeight.value);
 
-    if (minHeight > maxHeight) {
-      ev.target.minHeight.setCustomValidity(
-        'Minimum height must be lower than maximum height!'
-      );
-      return;
-    }
+    console.log({ minHeight, maxHeight });
+
+    if (minHeight > maxHeight) return;
 
     const steepness = Number(ev.target.steepness.value),
       color = ev.target.terrainColor.value,
       width = UI.getGridSize().columns;
 
+    let name = ev.target.terrainName.value;
+    if (!name.length) name = 'terrain' + terrainIndex;
+    terrainIndex++;
+
+    const id = currentSelection ?? uuidv4();
     const newTerrain = Terrain({
+      id,
+      name,
       minHeight,
       maxHeight,
       steepness,
@@ -37,7 +106,12 @@ const Input = (() => {
       width,
     });
 
-    App.addTerrain(newTerrain);
+    if (!currentSelection) {
+      updateSelectInput(newTerrain, 'add');
+      App.addTerrain(newTerrain);
+    } else {
+      App.updateTerrain(newTerrain);
+    }
   };
 
   toggleGridInput.onchange = (ev) => {
@@ -88,6 +162,10 @@ const Input = (() => {
     UI.hideSetupScreen();
 
     App.generateCells(rows * columns);
+  };
+
+  return {
+    updateTerrainOptions,
   };
 })();
 

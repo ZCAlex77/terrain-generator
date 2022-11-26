@@ -1,7 +1,7 @@
 import './styles/index.scss';
 import Input from './modules/Input';
 import UI from './modules/UI';
-import Cell from './modules/Cell';
+import Cell from './factories/Cell';
 
 const App = (() => {
   // Temporary
@@ -18,21 +18,41 @@ const App = (() => {
     cells.forEach((row) => row.forEach((cell) => cell.setColor('#fff0')));
 
     for (let i = 0; i < terrains.length; i++) {
-      let maxPoints = terrains[i].getMaxPoints();
+      let maxPoints = terrains[i].getProps('maxPoints');
       for (let j = 0; j < maxPoints.length; j++) {
         let maxPoint =
           maxPoints[j] < gridHeight ? maxPoints[j] : gridHeight - 1;
         for (let k = 0; k <= maxPoint; k++)
-          cells[j][k].setColor(terrains[i].getColor());
+          cells[j][k].setColor(terrains[i].getProps('color'));
       }
     }
 
     UI.renderScreen(cells);
   };
 
+  const getTerrain = (terrainId) => {
+    return terrains.find((terrain) => terrain.getProps('id') === terrainId);
+  };
+
+  const updateTerrainColor = (terrainId, newColor) => {
+    terrains[
+      terrains.findIndex((terrain) => terrain.getProps('id') === terrainId)
+    ].setColor(newColor);
+    prepareRender();
+  };
+
+  const updateTerrain = (updatedTerrain) => {
+    let targetTerrain = terrains.findIndex(
+      (terrain) => terrain.getProps('id') === updatedTerrain.getProps('id')
+    );
+    if (targetTerrain !== -1) {
+      terrains[targetTerrain] = updatedTerrain;
+      prepareRender();
+    }
+  };
+
   const addTerrain = (terrain) => {
-    //terrains.push(terrain);
-    terrains = [terrain];
+    terrains.push(terrain);
     prepareRender();
   };
 
@@ -48,9 +68,12 @@ const App = (() => {
   generateCells(100 * 54); // to be removed later
 
   return {
+    updateTerrain,
+    updateTerrainColor,
     prepareRender,
     generateCells,
     addTerrain,
+    getTerrain,
   };
 })();
 
