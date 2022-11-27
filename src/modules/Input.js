@@ -46,6 +46,7 @@ const Input = (() => {
     form.minHeight.value = newInputValues.minHeight;
     form.maxHeight.value = newInputValues.maxHeight;
     form.steepness.value = newInputValues.steepness;
+    form.smoothness.value = newInputValues.smoothness;
     form.terrainColor.value = newInputValues.color;
     form.terrainName.value = newInputValues.name;
   };
@@ -59,7 +60,8 @@ const Input = (() => {
         minHeight: 0,
         maxHeight: 1,
         steepness: 50,
-        color: '#000000',
+        smoothness: 0,
+        color: '#00ff00',
         name: '',
       });
       return;
@@ -116,6 +118,7 @@ const Input = (() => {
     if (minHeight > maxHeight) return;
 
     const steepness = Number(ev.target.steepness.value),
+      smoothness = Number(ev.target.smoothness.value),
       color = ev.target.terrainColor.value,
       width = UI.getGridSize().columns;
 
@@ -130,6 +133,7 @@ const Input = (() => {
       minHeight,
       maxHeight,
       steepness,
+      smoothness,
       color,
       width,
     });

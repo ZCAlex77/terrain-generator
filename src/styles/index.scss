@@ -54,6 +54,7 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
   flex-direction: column;
   justify-content: flex-start;
   overflow-y: auto;
+  padding-bottom: 20px;
 
   h1 {
     padding: 10px;
