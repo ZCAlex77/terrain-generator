@@ -76,9 +76,11 @@ const Input = (() => {
 
   deleteTerrainBtn.onclick = () => {
     if (!currentSelection) return;
-    const confirmation = window.confirm(
-      'Are you sure you want to delete selected terrain?'
-    );
+    // const confirmation = window.confirm(
+    //   'Are you sure you want to delete selected terrain?'
+    // );
+
+    const confirmation = true;
     if (confirmation) {
       App.deleteTerrain(currentSelection);
       updateSelectInput(currentSelection, 'remove');

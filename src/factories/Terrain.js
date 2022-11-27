@@ -12,16 +12,23 @@ const Terrain = (props) => {
   const setName = (newName) => (props.name = newName);
 
   const getRandomHeightChange = () => {
-    if (Math.random() * 101 < props.smoothness) {
-      return 0;
-    }
+    if (Math.random() * 101 < props.smoothness) return 0;
     const randomNumber = Math.floor(Math.random() * props.steepness);
-    if (randomNumber >= 90) return 5;
-    if (randomNumber >= 70) return 4;
-    if (randomNumber >= 50) return 3;
-    if (randomNumber >= 20) return 2;
-    if (randomNumber > 0) return Math.random() > 0.5 ? 1 : 0;
-    if (randomNumber === 0) return 0;
+    const randomNumber2 = Math.random();
+
+    if (!randomNumber) return 0;
+    switch (Math.floor(randomNumber / 20)) {
+      case 4:
+        return randomNumber2 < 0.5 ? 4 : 5;
+      case 3:
+        return randomNumber2 < 0.5 ? 3 : 4;
+      case 2:
+        return randomNumber2 < 0.5 ? 2 : 3;
+      case 1:
+        return randomNumber2 < 0.5 ? 1 : 2;
+      case 0:
+        return randomNumber2 < 0.5 ? 0 : 1;
+    }
   };
 
   const generate = (() => {
