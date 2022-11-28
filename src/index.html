@@ -35,9 +35,13 @@
       <select id="terrainSelect">
         <option value="new">New Terrain</option>
       </select>
-      <button class="press-button terrain-selected" id="deleteTerrainBtn">Delete current terrain</button>
+      <button class="press-button terrain-selected" id="delete-terrain-btn">Delete current terrain</button>
       <h3>Terrain options</h3>
-      <form id="terrainOptions">
+      <div class="terrain-selected">
+        <input type="number" name="zIndex" id="z-index" min="0" max="-1" value="0">
+        <label for="z-index">Z-index</label>
+      </div>
+      <form id="terrain-options">
         <div>
           <input type="number" name="maxHeight" min="0" value="1">
           <label for="maxHeight">Maximum height</label>
@@ -62,7 +66,7 @@
           <label for="terrainName">Name</label>
           <input type="text" name="terrainName">
         </div>
-        <input class="press-button" type="submit" id="generateBtn" value="Generate">
+        <input class="press-button" type="submit" id="generate-terrain-btn" value="Generate">
       </form>
     </div>
   </div>

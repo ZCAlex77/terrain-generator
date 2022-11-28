@@ -98,6 +98,14 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
       width: 100%;
       font-size: 1.1rem;
     }
+
+    input[type='number'] {
+      width: 7ch;
+      font-size: 1.1rem;
+      display: inline-block;
+      padding: 3px 0;
+      text-align: center;
+    }
   }
 
   select {
@@ -112,14 +120,6 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
   }
 
   form {
-    input[type='number'] {
-      width: 7ch;
-      font-size: 1.1rem;
-      display: inline-block;
-      padding: 3px 0;
-      text-align: center;
-    }
-
     label:not(:last-of-type) {
       display: inline-block;
     }
@@ -133,7 +133,7 @@ input:where([type='submit'], [type='color'], [type='radio'], [type='checkbox'], 
   }
 }
 
-#deleteTerrainBtn {
+#delete-terrain-btn {
   background: red;
   color: #fff;
   width: 100%;

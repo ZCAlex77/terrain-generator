@@ -30,14 +30,33 @@ const App = (() => {
     UI.renderScreen(cells);
   };
 
+  // terrain-related functions
+  const getTerrainIndex = (terrainId) =>
+    terrains.findIndex((terrain) => terrain.getProps('id') === terrainId);
+
   const getTerrain = (terrainId) => {
     return terrains.find((terrain) => terrain.getProps('id') === terrainId);
+  };
+
+  const updateTerrain = (updatedTerrain) => {
+    let targetTerrain = terrains.findIndex(
+      (terrain) => terrain.getProps('id') === updatedTerrain.getProps('id')
+    );
+    if (targetTerrain !== -1) {
+      terrains[targetTerrain] = updatedTerrain;
+      prepareRender();
+    }
   };
 
   const deleteTerrain = (terrainId) => {
     terrains = terrains.filter(
       (terrain) => terrain.getProps('id') !== terrainId
     );
+    prepareRender();
+  };
+
+  const addTerrain = (terrain) => {
+    terrains.push(terrain);
     prepareRender();
   };
 
@@ -58,21 +77,18 @@ const App = (() => {
     }
   };
 
-  const updateTerrain = (updatedTerrain) => {
-    let targetTerrain = terrains.findIndex(
-      (terrain) => terrain.getProps('id') === updatedTerrain.getProps('id')
+  const moveTerrain = (terrainId, newIndex) => {
+    const terrainIndex = terrains.findIndex(
+      (terrain) => terrain.getProps('id') === terrainId
     );
-    if (targetTerrain !== -1) {
-      terrains[targetTerrain] = updatedTerrain;
-      prepareRender();
-    }
-  };
-
-  const addTerrain = (terrain) => {
-    terrains.push(terrain);
+    [terrains[terrainIndex], terrains[newIndex]] = [
+      terrains[newIndex],
+      terrains[terrainIndex],
+    ];
     prepareRender();
   };
 
+  // cell generation
   const generateCells = (numberOfCells) => {
     let numberOfColumns = UI.getGridSize().columns;
 
@@ -85,9 +101,11 @@ const App = (() => {
   generateCells(100 * 54); // to be removed later
 
   return {
+    getTerrainIndex,
     deleteTerrain,
     updateTerrain,
     updateTerrainProps,
+    moveTerrain,
     prepareRender,
     generateCells,
     addTerrain,

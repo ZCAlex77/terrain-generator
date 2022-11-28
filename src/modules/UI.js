@@ -17,7 +17,7 @@ const UI = (() => {
   };
 
   const changeGenerateButtonText = (newText) =>
-    (document.querySelector('#generateBtn').value = newText);
+    (document.querySelector('#generate-terrain-btn').value = newText);
 
   const setCanvasBackground = (newBackground) => {
     canvas.style.background = newBackground;
