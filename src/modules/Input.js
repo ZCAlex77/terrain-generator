@@ -92,8 +92,10 @@ const Input = (() => {
       width = UI.getGridSize().columns;
 
     let name = ev.target.terrainName.value;
-    if (!name.length) name = 'terrain' + terrainIndex;
-    terrainIndex++;
+    if (!name.length && !currentSelection) {
+      name = 'terrain' + terrainIndex;
+      terrainIndex++;
+    }
 
     const id = currentSelection ?? uuidv4();
     const newTerrain = Terrain({
