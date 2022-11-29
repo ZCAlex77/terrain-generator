@@ -2,6 +2,7 @@ const UI = (() => {
   const canvas = document.querySelector('canvas'),
     ctx = canvas.getContext('2d'),
     optionGroups = document.querySelectorAll('.option-group'),
+    arrows = document.querySelectorAll('.arrow'),
     options = document.querySelectorAll('.option'),
     selectedTerrainOptions = document.querySelectorAll('.terrain-selected');
 
@@ -9,6 +10,7 @@ const UI = (() => {
   let columns = null;
   let rows = null;
   let isGridVisible = false;
+  let lastOpenOption = 0;
 
   const toggleSelectedTerrainOptions = (state) => {
     selectedTerrainOptions.forEach(
@@ -23,13 +25,19 @@ const UI = (() => {
     canvas.style.background = newBackground;
   };
 
-  const showOption = (element, index) => {
-    options.forEach((option) => (option.style.display = 'none'));
-    options[index].style.display = 'block';
-    optionGroups.forEach(
-      (group) => (group.children[0].style.transform = 'rotate(90deg)')
-    );
-    element.children[0].style.transform = 'rotate(-90deg)';
+  const showOption = (index) => {
+    options.forEach((option, i) => {
+      if (i !== index) {
+        option.style.display = 'none';
+        arrows[i].style.transform = 'rotate(90deg)';
+      }
+    });
+
+    let currentOpenState = options[index].style.display;
+    options[index].style.display =
+      currentOpenState === 'none' ? 'block' : 'none';
+    arrows[index].style.transform =
+      currentOpenState === 'none' ? 'rotate(-90deg)' : 'rotate(90deg)';
   };
 
   const toggleGrid = (newState) => {

@@ -192,9 +192,9 @@ const Input = (() => {
 
   // OPTION GROUPS
   // switches between option groups on click
-  document.querySelectorAll('.option-group').forEach((el, i) => {
+  document.querySelectorAll('.option-group').forEach((el) => {
     el.onclick = (ev) => {
-      UI.showOption(ev.target, i);
+      UI.showOption(Number(ev.target.dataset.option));
     };
   });
 

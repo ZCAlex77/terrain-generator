@@ -7,7 +7,7 @@ const App = (() => {
   // Temporary
   UI.setGridSize('54', '100');
   UI.resizeCanvas();
-  UI.showOption(document.querySelector('.option-group'), 1);
+  UI.showOption(1);
   // ---------
 
   let cells = [];
@@ -118,5 +118,4 @@ export default App;
 /*
   TODO:
   - fix bug preventing image backgrounds
-  - fix visual bug (menu arrows)
 */
