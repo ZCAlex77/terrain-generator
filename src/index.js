@@ -4,11 +4,13 @@ import UI from './modules/UI';
 import Cell from './factories/Cell';
 
 const App = (() => {
+  /* 
   // Temporary
   UI.setGridSize('54', '100');
   UI.resizeCanvas();
   UI.showOption(1);
   // ---------
+  */
 
   let cells = [];
   let terrains = [];
