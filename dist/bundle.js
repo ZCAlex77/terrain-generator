@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Rubik&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Rubik\", sans-serif;\n}\n\nbody {\n  height: 100vh;\n  width: 100%;\n  overflow: hidden;\n  background: #111111;\n  display: grid;\n  grid-template-columns: 26vw 1fr;\n}\nbody > div:not(.menu) {\n  height: 100%;\n}\n\n:where(.flex-center) {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\nbutton,\nselect,\ninput:where([type=submit],\n[type=color],\n[type=radio],\n[type=checkbox],\n[type=range]) {\n  cursor: pointer;\n}\n\n.press-button {\n  padding: 5px;\n  border: 0;\n  transition: transform 0.1s, box-shadow 0.1s;\n}\n.press-button:active {\n  transform: translate(2px, 2px);\n  box-shadow: 0 0 0 #fff;\n}\n\n.terrain-selected {\n  display: none;\n}\n\n.menu {\n  height: 100vh;\n  background: #222;\n  color: #fff;\n  flex-direction: column;\n  justify-content: flex-start;\n  overflow-y: auto;\n  padding-bottom: 20px;\n}\n.menu h1 {\n  padding: 10px;\n}\n.menu .option-group {\n  width: 90%;\n  font-size: 1.4rem;\n  cursor: pointer;\n  background: #333;\n  padding: 5px;\n  text-align: center;\n  position: relative;\n  margin-top: 10px;\n}\n.menu .option-group span {\n  position: absolute;\n  right: 10px;\n  transform: rotate(90deg);\n}\n.menu .option {\n  width: 90%;\n  font-size: 1.3rem;\n  background: #444;\n  padding: 10px;\n  display: none;\n}\n.menu .option h3 {\n  margin-bottom: 10px;\n}\n.menu .option div {\n  margin-bottom: 10px;\n}\n.menu .option input:not([type=radio], [type=checkbox], [type=number]) {\n  display: block;\n  margin: 5px 0;\n  width: 100%;\n  font-size: 1.1rem;\n}\n.menu .option input[type=number] {\n  width: 7ch;\n  font-size: 1.1rem;\n  display: inline-block;\n  padding: 3px 0;\n  text-align: center;\n}\n.menu select {\n  width: 100%;\n  font-size: 1.1rem;\n  text-align: center;\n  margin-bottom: 10px;\n  border-radius: 0;\n  border: 1px solid #fff;\n  background: #fff;\n  padding: 5px 0;\n}\n.menu form label:not(:last-of-type) {\n  display: inline-block;\n}\n.menu form input[type=submit],\n.menu form button {\n  background: green;\n  color: #fff;\n  box-shadow: 2px 2px 2px darkgreen;\n}\n\n#delete-terrain-btn {\n  background: red;\n  color: #fff;\n  width: 100%;\n  box-shadow: 2px 2px darkred;\n  font-size: 1.1rem;\n  margin-bottom: 5px;\n}\n\n.setup {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  color: #fff;\n  background: #111;\n  flex-direction: column;\n  gap: 40px;\n  display: flex;\n}\n.setup > div {\n  gap: 20px;\n  width: 70%;\n}\n.setup > div > div {\n  flex-direction: column;\n  gap: 5px;\n}\n.setup input {\n  width: 10ch;\n  text-align: center;\n  font-size: 1.6rem;\n  display: block;\n}\n.setup button {\n  padding: 5px 10px;\n  background: red;\n  color: #fff;\n  font-size: 1.6rem;\n  box-shadow: 2px 2px 2px darkred;\n}\n\ncanvas {\n  background: #555;\n  background-size: cover;\n}", "",{"version":3,"sources":["webpack://./src/styles/index.scss"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;EACA,gCAAA;AAAF;;AAGA;EACE,aAAA;EACA,WAAA;EACA,gBAAA;EACA,mBAAA;EACA,aAAA;EACA,+BAAA;AAAF;AAEE;EACE,YAAA;AAAJ;;AAIA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;AADF;;AAIA;;;;;;;EASE,eAAA;AAHF;;AAMA;EACE,YAAA;EACA,SAAA;EACA,2CAAA;AAHF;AAKE;EACE,8BAAA;EACA,sBAAA;AAHJ;;AAOA;EACE,aAAA;AAJF;;AAOA;EACE,aAAA;EACA,gBAAA;EACA,WAAA;EACA,sBAAA;EACA,2BAAA;EACA,gBAAA;EACA,oBAAA;AAJF;AAME;EACE,aAAA;AAJJ;AAOE;EACE,UAAA;EACA,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;AALJ;AAOI;EACE,kBAAA;EACA,WAAA;EACA,wBAAA;AALN;AASE;EACE,UAAA;EACA,iBAAA;EACA,gBAAA;EACA,aAAA;EACA,aAAA;AAPJ;AASI;EACE,mBAAA;AAPN;AAUI;EACE,mBAAA;AARN;AAWI;EACE,cAAA;EACA,aAAA;EACA,WAAA;EACA,iBAAA;AATN;AAYI;EACE,UAAA;EACA,iBAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;AAVN;AAcE;EACE,WAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,cAAA;AAZJ;AAgBI;EACE,qBAAA;AAdN;AAiBI;;EAEE,iBAAA;EACA,WAAA;EACA,iCAAA;AAfN;;AAoBA;EACE,eAAA;EACA,WAAA;EACA,WAAA;EACA,2BAAA;EACA,iBAAA;EACA,kBAAA;AAjBF;;AAoBA;EACE,WAAA;EACA,YAAA;EACA,eAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,gBAAA;EACA,sBAAA;EACA,SAAA;EACA,aAAA;AAjBF;AAmBE;EACE,SAAA;EACA,UAAA;AAjBJ;AAmBI;EACE,sBAAA;EACA,QAAA;AAjBN;AAqBE;EACE,WAAA;EACA,kBAAA;EACA,iBAAA;EACA,cAAA;AAnBJ;AAsBE;EACE,iBAAA;EACA,eAAA;EACA,WAAA;EACA,iBAAA;EACA,+BAAA;AApBJ;;AAwBA;EACE,gBAAA;EACA,sBAAA;AArBF","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Rubik', sans-serif;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100%;\r\n  overflow: hidden;\r\n  background: #111111;\r\n  display: grid;\r\n  grid-template-columns: 26vw 1fr;\r\n\r\n  > div:not(.menu) {\r\n    height: 100%;\r\n  }\r\n}\r\n\r\n:where(.flex-center) {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\nbutton,\r\nselect,\r\ninput:where(\r\n    [type='submit'],\r\n    [type='color'],\r\n    [type='radio'],\r\n    [type='checkbox'],\r\n    [type='range']\r\n  ) {\r\n  cursor: pointer;\r\n}\r\n\r\n.press-button {\r\n  padding: 5px;\r\n  border: 0;\r\n  transition: transform 0.1s, box-shadow 0.1s;\r\n\r\n  &:active {\r\n    transform: translate(2px, 2px);\r\n    box-shadow: 0 0 0 #fff;\r\n  }\r\n}\r\n\r\n.terrain-selected {\r\n  display: none;\r\n}\r\n\r\n.menu {\r\n  height: 100vh;\r\n  background: #222;\r\n  color: #fff;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  overflow-y: auto;\r\n  padding-bottom: 20px;\r\n\r\n  h1 {\r\n    padding: 10px;\r\n  }\r\n\r\n  .option-group {\r\n    width: 90%;\r\n    font-size: 1.4rem;\r\n    cursor: pointer;\r\n    background: #333;\r\n    padding: 5px;\r\n    text-align: center;\r\n    position: relative;\r\n    margin-top: 10px;\r\n\r\n    span {\r\n      position: absolute;\r\n      right: 10px;\r\n      transform: rotate(90deg);\r\n    }\r\n  }\r\n\r\n  .option {\r\n    width: 90%;\r\n    font-size: 1.3rem;\r\n    background: #444;\r\n    padding: 10px;\r\n    display: none;\r\n\r\n    h3 {\r\n      margin-bottom: 10px;\r\n    }\r\n\r\n    div {\r\n      margin-bottom: 10px;\r\n    }\r\n\r\n    input:not([type='radio'], [type='checkbox'], [type='number']) {\r\n      display: block;\r\n      margin: 5px 0;\r\n      width: 100%;\r\n      font-size: 1.1rem;\r\n    }\r\n\r\n    input[type='number'] {\r\n      width: 7ch;\r\n      font-size: 1.1rem;\r\n      display: inline-block;\r\n      padding: 3px 0;\r\n      text-align: center;\r\n    }\r\n  }\r\n\r\n  select {\r\n    width: 100%;\r\n    font-size: 1.1rem;\r\n    text-align: center;\r\n    margin-bottom: 10px;\r\n    border-radius: 0;\r\n    border: 1px solid #fff;\r\n    background: #fff;\r\n    padding: 5px 0;\r\n  }\r\n\r\n  form {\r\n    label:not(:last-of-type) {\r\n      display: inline-block;\r\n    }\r\n\r\n    input[type='submit'],\r\n    button {\r\n      background: green;\r\n      color: #fff;\r\n      box-shadow: 2px 2px 2px darkgreen;\r\n    }\r\n  }\r\n}\r\n\r\n#delete-terrain-btn {\r\n  background: red;\r\n  color: #fff;\r\n  width: 100%;\r\n  box-shadow: 2px 2px darkred;\r\n  font-size: 1.1rem;\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.setup {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  color: #fff;\r\n  background: #111;\r\n  flex-direction: column;\r\n  gap: 40px;\r\n  display: flex;\r\n\r\n  > div {\r\n    gap: 20px;\r\n    width: 70%;\r\n\r\n    > div {\r\n      flex-direction: column;\r\n      gap: 5px;\r\n    }\r\n  }\r\n\r\n  input {\r\n    width: 10ch;\r\n    text-align: center;\r\n    font-size: 1.6rem;\r\n    display: block;\r\n  }\r\n\r\n  button {\r\n    padding: 5px 10px;\r\n    background: red;\r\n    color: #fff;\r\n    font-size: 1.6rem;\r\n    box-shadow: 2px 2px 2px darkred;\r\n  }\r\n}\r\n\r\ncanvas {\r\n  background: #555;\r\n  background-size: cover;\r\n}\r\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Rubik\", sans-serif;\n}\n\nbody {\n  height: 100vh;\n  width: 100%;\n  overflow: hidden;\n  background: #111111;\n  display: grid;\n  grid-template-columns: 26vw 1fr;\n}\nbody > div:not(.menu) {\n  height: 100%;\n}\n\n:where(.flex-center) {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\nbutton,\nselect,\ninput:where([type=submit],\n[type=color],\n[type=radio],\n[type=checkbox],\n[type=range]) {\n  cursor: pointer;\n}\n\n.press-button {\n  padding: 5px;\n  border: 0;\n  transition: transform 0.1s, box-shadow 0.1s;\n}\n.press-button:active {\n  transform: translate(2px, 2px);\n  box-shadow: 0 0 0 #fff;\n}\n\n.terrain-selected {\n  display: none;\n}\n\n.menu {\n  height: 100vh;\n  background: #222;\n  color: #fff;\n  flex-direction: column;\n  justify-content: flex-start;\n  overflow-y: auto;\n  padding-bottom: 20px;\n}\n.menu h1 {\n  padding: 10px;\n}\n.menu .option-group {\n  width: 90%;\n  font-size: 1.4rem;\n  cursor: pointer;\n  background: #333;\n  padding: 5px;\n  text-align: center;\n  position: relative;\n  margin-top: 10px;\n}\n.menu .option-group span {\n  position: absolute;\n  right: 10px;\n  transform: rotate(90deg);\n}\n.menu .option {\n  width: 90%;\n  font-size: 1.3rem;\n  background: #444;\n  padding: 10px;\n  display: none;\n}\n.menu .option h3 {\n  margin-bottom: 10px;\n}\n.menu .option div {\n  margin-bottom: 10px;\n}\n.menu .option input:not([type=radio], [type=checkbox], [type=number]) {\n  display: block;\n  margin: 5px 0;\n  width: 100%;\n  font-size: 1.1rem;\n}\n.menu .option input[type=number] {\n  width: 7ch;\n  font-size: 1.1rem;\n  display: inline-block;\n  padding: 3px 0;\n  text-align: center;\n}\n.menu select {\n  width: 100%;\n  font-size: 1.1rem;\n  text-align: center;\n  margin-bottom: 10px;\n  border-radius: 0;\n  border: 1px solid #fff;\n  background: #fff;\n  padding: 5px 0;\n}\n.menu form label:not(:last-of-type) {\n  display: inline-block;\n}\n.menu form input[type=submit],\n.menu form button {\n  background: green;\n  color: #fff;\n  box-shadow: 2px 2px 2px darkgreen;\n}\n\n#delete-terrain-btn {\n  background: red;\n  color: #fff;\n  width: 100%;\n  box-shadow: 2px 2px darkred;\n  font-size: 1.1rem;\n  margin-bottom: 5px;\n}\n\n.setup {\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  top: 0;\n  left: 0;\n  color: #fff;\n  background: #111;\n  flex-direction: column;\n  gap: 40px;\n  display: none;\n}\n.setup > div {\n  gap: 20px;\n  width: 70%;\n}\n.setup > div > div {\n  flex-direction: column;\n  gap: 5px;\n}\n.setup input {\n  width: 10ch;\n  text-align: center;\n  font-size: 1.6rem;\n  display: block;\n}\n.setup button {\n  padding: 5px 10px;\n  background: red;\n  color: #fff;\n  font-size: 1.6rem;\n  box-shadow: 2px 2px 2px darkred;\n}\n\ncanvas {\n  background: #555;\n  background-size: cover;\n}", "",{"version":3,"sources":["webpack://./src/styles/index.scss"],"names":[],"mappings":"AAEA;EACE,SAAA;EACA,UAAA;EACA,sBAAA;EACA,gCAAA;AAAF;;AAGA;EACE,aAAA;EACA,WAAA;EACA,gBAAA;EACA,mBAAA;EACA,aAAA;EACA,+BAAA;AAAF;AAEE;EACE,YAAA;AAAJ;;AAIA;EACE,aAAA;EACA,mBAAA;EACA,uBAAA;AADF;;AAIA;;;;;;;EASE,eAAA;AAHF;;AAMA;EACE,YAAA;EACA,SAAA;EACA,2CAAA;AAHF;AAKE;EACE,8BAAA;EACA,sBAAA;AAHJ;;AAOA;EACE,aAAA;AAJF;;AAOA;EACE,aAAA;EACA,gBAAA;EACA,WAAA;EACA,sBAAA;EACA,2BAAA;EACA,gBAAA;EACA,oBAAA;AAJF;AAME;EACE,aAAA;AAJJ;AAOE;EACE,UAAA;EACA,iBAAA;EACA,eAAA;EACA,gBAAA;EACA,YAAA;EACA,kBAAA;EACA,kBAAA;EACA,gBAAA;AALJ;AAOI;EACE,kBAAA;EACA,WAAA;EACA,wBAAA;AALN;AASE;EACE,UAAA;EACA,iBAAA;EACA,gBAAA;EACA,aAAA;EACA,aAAA;AAPJ;AASI;EACE,mBAAA;AAPN;AAUI;EACE,mBAAA;AARN;AAWI;EACE,cAAA;EACA,aAAA;EACA,WAAA;EACA,iBAAA;AATN;AAYI;EACE,UAAA;EACA,iBAAA;EACA,qBAAA;EACA,cAAA;EACA,kBAAA;AAVN;AAcE;EACE,WAAA;EACA,iBAAA;EACA,kBAAA;EACA,mBAAA;EACA,gBAAA;EACA,sBAAA;EACA,gBAAA;EACA,cAAA;AAZJ;AAgBI;EACE,qBAAA;AAdN;AAiBI;;EAEE,iBAAA;EACA,WAAA;EACA,iCAAA;AAfN;;AAoBA;EACE,eAAA;EACA,WAAA;EACA,WAAA;EACA,2BAAA;EACA,iBAAA;EACA,kBAAA;AAjBF;;AAoBA;EACE,WAAA;EACA,YAAA;EACA,eAAA;EACA,MAAA;EACA,OAAA;EACA,WAAA;EACA,gBAAA;EACA,sBAAA;EACA,SAAA;EACA,aAAA;AAjBF;AAmBE;EACE,SAAA;EACA,UAAA;AAjBJ;AAmBI;EACE,sBAAA;EACA,QAAA;AAjBN;AAqBE;EACE,WAAA;EACA,kBAAA;EACA,iBAAA;EACA,cAAA;AAnBJ;AAsBE;EACE,iBAAA;EACA,eAAA;EACA,WAAA;EACA,iBAAA;EACA,+BAAA;AApBJ;;AAwBA;EACE,gBAAA;EACA,sBAAA;AArBF","sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');\r\n\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n  font-family: 'Rubik', sans-serif;\r\n}\r\n\r\nbody {\r\n  height: 100vh;\r\n  width: 100%;\r\n  overflow: hidden;\r\n  background: #111111;\r\n  display: grid;\r\n  grid-template-columns: 26vw 1fr;\r\n\r\n  > div:not(.menu) {\r\n    height: 100%;\r\n  }\r\n}\r\n\r\n:where(.flex-center) {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n}\r\n\r\nbutton,\r\nselect,\r\ninput:where(\r\n    [type='submit'],\r\n    [type='color'],\r\n    [type='radio'],\r\n    [type='checkbox'],\r\n    [type='range']\r\n  ) {\r\n  cursor: pointer;\r\n}\r\n\r\n.press-button {\r\n  padding: 5px;\r\n  border: 0;\r\n  transition: transform 0.1s, box-shadow 0.1s;\r\n\r\n  &:active {\r\n    transform: translate(2px, 2px);\r\n    box-shadow: 0 0 0 #fff;\r\n  }\r\n}\r\n\r\n.terrain-selected {\r\n  display: none;\r\n}\r\n\r\n.menu {\r\n  height: 100vh;\r\n  background: #222;\r\n  color: #fff;\r\n  flex-direction: column;\r\n  justify-content: flex-start;\r\n  overflow-y: auto;\r\n  padding-bottom: 20px;\r\n\r\n  h1 {\r\n    padding: 10px;\r\n  }\r\n\r\n  .option-group {\r\n    width: 90%;\r\n    font-size: 1.4rem;\r\n    cursor: pointer;\r\n    background: #333;\r\n    padding: 5px;\r\n    text-align: center;\r\n    position: relative;\r\n    margin-top: 10px;\r\n\r\n    span {\r\n      position: absolute;\r\n      right: 10px;\r\n      transform: rotate(90deg);\r\n    }\r\n  }\r\n\r\n  .option {\r\n    width: 90%;\r\n    font-size: 1.3rem;\r\n    background: #444;\r\n    padding: 10px;\r\n    display: none;\r\n\r\n    h3 {\r\n      margin-bottom: 10px;\r\n    }\r\n\r\n    div {\r\n      margin-bottom: 10px;\r\n    }\r\n\r\n    input:not([type='radio'], [type='checkbox'], [type='number']) {\r\n      display: block;\r\n      margin: 5px 0;\r\n      width: 100%;\r\n      font-size: 1.1rem;\r\n    }\r\n\r\n    input[type='number'] {\r\n      width: 7ch;\r\n      font-size: 1.1rem;\r\n      display: inline-block;\r\n      padding: 3px 0;\r\n      text-align: center;\r\n    }\r\n  }\r\n\r\n  select {\r\n    width: 100%;\r\n    font-size: 1.1rem;\r\n    text-align: center;\r\n    margin-bottom: 10px;\r\n    border-radius: 0;\r\n    border: 1px solid #fff;\r\n    background: #fff;\r\n    padding: 5px 0;\r\n  }\r\n\r\n  form {\r\n    label:not(:last-of-type) {\r\n      display: inline-block;\r\n    }\r\n\r\n    input[type='submit'],\r\n    button {\r\n      background: green;\r\n      color: #fff;\r\n      box-shadow: 2px 2px 2px darkgreen;\r\n    }\r\n  }\r\n}\r\n\r\n#delete-terrain-btn {\r\n  background: red;\r\n  color: #fff;\r\n  width: 100%;\r\n  box-shadow: 2px 2px darkred;\r\n  font-size: 1.1rem;\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.setup {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  color: #fff;\r\n  background: #111;\r\n  flex-direction: column;\r\n  gap: 40px;\r\n  display: none;\r\n\r\n  > div {\r\n    gap: 20px;\r\n    width: 70%;\r\n\r\n    > div {\r\n      flex-direction: column;\r\n      gap: 5px;\r\n    }\r\n  }\r\n\r\n  input {\r\n    width: 10ch;\r\n    text-align: center;\r\n    font-size: 1.6rem;\r\n    display: block;\r\n  }\r\n\r\n  button {\r\n    padding: 5px 10px;\r\n    background: red;\r\n    color: #fff;\r\n    font-size: 1.6rem;\r\n    box-shadow: 2px 2px 2px darkred;\r\n  }\r\n}\r\n\r\ncanvas {\r\n  background: #555;\r\n  background-size: cover;\r\n}\r\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -723,8 +723,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 const Terrain = (props) => {
-  props.maxPoints = [];
-
   const getProps = (propName = null) => {
     if (propName) {
       return props[propName];
@@ -756,6 +754,7 @@ const Terrain = (props) => {
   };
 
   const generate = (() => {
+    if (props.maxPoints.length) return;
     let direction = Math.random() < 0.5 ? -1 : 1;
     let currentPosition =
       Math.floor(Math.random() * (props.maxHeight - props.minHeight)) +
@@ -800,98 +799,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/index.scss */ "./src/styles/index.scss");
 /* harmony import */ var _modules_Input__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/Input */ "./src/modules/Input.js");
 /* harmony import */ var _modules_UI__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/UI */ "./src/modules/UI.js");
-/* harmony import */ var _factories_Cell__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./factories/Cell */ "./src/factories/Cell.js");
+/* harmony import */ var _modules_Storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/Storage */ "./src/modules/Storage.js");
+/* harmony import */ var _factories_Cell__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./factories/Cell */ "./src/factories/Cell.js");
+/* harmony import */ var _factories_Terrain__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./factories/Terrain */ "./src/factories/Terrain.js");
+
+
 
 
 
 
 
 const App = (() => {
-  /* 
-  // Temporary
-  UI.setGridSize('54', '100');
-  UI.resizeCanvas();
-  UI.showOption(1);
+  // Temporary (or not, the other option is a buggy mess so I'll stick to this for now)
+  _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].setGridSize('54', '100');
+  _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].resizeCanvas();
+  _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].showOption(1);
   // ---------
-  */
 
-  let cells = [];
-  let terrains = [];
-
-  const prepareRender = () => {
-    const gridHeight = _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].getGridSize().rows;
-    cells.forEach((row) => row.forEach((cell) => cell.setColor('#fff0')));
-
-    for (let i = 0; i < terrains.length; i++) {
-      let maxPoints = terrains[i].getProps('maxPoints');
-      for (let j = 0; j < maxPoints.length; j++) {
-        let maxPoint =
-          maxPoints[j] < gridHeight ? maxPoints[j] : gridHeight - 1;
-        for (let k = 0; k <= maxPoint; k++)
-          cells[j][k].setColor(terrains[i].getProps('color'));
-      }
-    }
-
-    _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].renderScreen(cells);
-  };
-
-  // terrain-related functions
-  const getTerrainIndex = (terrainId) =>
-    terrains.findIndex((terrain) => terrain.getProps('id') === terrainId);
-
-  const getTerrain = (terrainId) => {
-    return terrains.find((terrain) => terrain.getProps('id') === terrainId);
-  };
-
-  const updateTerrain = (updatedTerrain) => {
-    let targetTerrain = terrains.findIndex(
-      (terrain) => terrain.getProps('id') === updatedTerrain.getProps('id')
-    );
-    if (targetTerrain !== -1) {
-      terrains[targetTerrain] = updatedTerrain;
-      prepareRender();
-    }
-  };
-
-  const deleteTerrain = (terrainId) => {
-    terrains = terrains.filter(
-      (terrain) => terrain.getProps('id') !== terrainId
-    );
-    prepareRender();
-  };
-
-  const addTerrain = (terrain) => {
-    terrains.push(terrain);
-    prepareRender();
-  };
-
-  const updateTerrainProps = (terrainId, propValue, prop) => {
-    const targetTerrain =
-      terrains[
-        terrains.findIndex((terrain) => terrain.getProps('id') === terrainId)
-      ];
-
-    switch (prop) {
-      case 'color':
-        targetTerrain.setColor(propValue);
-        prepareRender();
-        break;
-      case 'name':
-        targetTerrain.setName(propValue);
-        break;
-    }
-  };
-
-  const moveTerrain = (terrainId, newIndex) => {
-    const terrainIndex = terrains.findIndex(
-      (terrain) => terrain.getProps('id') === terrainId
-    );
-    [terrains[terrainIndex], terrains[newIndex]] = [
-      terrains[newIndex],
-      terrains[terrainIndex],
-    ];
-    prepareRender();
-  };
+  let terrainArray = [];
+  const cells = [];
 
   // cell generation
   const generateCells = (numberOfCells) => {
@@ -899,11 +825,96 @@ const App = (() => {
 
     for (let i = 0; i < numberOfCells; i++) {
       if (!cells[i % numberOfColumns]) cells[i % numberOfColumns] = [];
-      cells[i % numberOfColumns].push((0,_factories_Cell__WEBPACK_IMPORTED_MODULE_3__["default"])('#fff0'));
+      cells[i % numberOfColumns].push((0,_factories_Cell__WEBPACK_IMPORTED_MODULE_4__["default"])('#fff0'));
     }
   };
 
-  generateCells(100 * 54); // to be removed later
+  generateCells(100 * 54);
+
+  const prepareRender = () => {
+    const gridHeight = _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].getGridSize().rows;
+    cells.forEach((row) => row.forEach((cell) => cell.setColor('#fff0')));
+
+    for (let i = 0; i < terrainArray.length; i++) {
+      let maxPoints = terrainArray[i].getProps('maxPoints');
+      for (let j = 0; j < maxPoints.length; j++) {
+        let maxPoint =
+          maxPoints[j] < gridHeight ? maxPoints[j] : gridHeight - 1;
+        for (let k = 0; k <= maxPoint; k++)
+          cells[j][k].setColor(terrainArray[i].getProps('color'));
+      }
+    }
+
+    _modules_UI__WEBPACK_IMPORTED_MODULE_2__["default"].renderScreen(cells);
+  };
+
+  // terrain-related functions
+  const getTerrain = (terrainId) => {
+    return terrainArray.find((terrain) => terrain.getProps('id') === terrainId);
+  };
+
+  const getTerrainIndex = (terrainId) =>
+    terrainArray.findIndex((terrain) => terrain.getProps('id') === terrainId);
+
+  const addTerrain = (terrain) => {
+    terrainArray.push(terrain);
+    _modules_Storage__WEBPACK_IMPORTED_MODULE_3__["default"].saveTerrains(terrainArray);
+    prepareRender();
+  };
+
+  const deleteTerrain = (terrainId) => {
+    terrainArray = terrainArray.filter(
+      (terrain) => terrain.getProps('id') !== terrainId
+    );
+
+    _modules_Storage__WEBPACK_IMPORTED_MODULE_3__["default"].saveTerrains(terrainArray);
+    prepareRender();
+  };
+
+  const updateTerrain = (updatedTerrain) => {
+    let targetTerrain = getTerrainIndex(updatedTerrain.getProps('id'));
+    if (targetTerrain !== -1) {
+      terrainArray[targetTerrain] = updatedTerrain;
+      _modules_Storage__WEBPACK_IMPORTED_MODULE_3__["default"].saveTerrains(terrainArray);
+      prepareRender();
+    }
+  };
+
+  const updateTerrainProps = (terrainId, propValue, prop) => {
+    const targetTerrain = getTerrainIndex(terrainId);
+
+    switch (prop) {
+      case 'color':
+        terrainArray[targetTerrain].setColor(propValue);
+        prepareRender();
+        break;
+      case 'name':
+        terrainArray[targetTerrain].setName(propValue);
+        break;
+    }
+
+    _modules_Storage__WEBPACK_IMPORTED_MODULE_3__["default"].saveTerrains(terrainArray);
+  };
+
+  const moveTerrain = (terrainId, newIndex) => {
+    const terrainIndex = terrainArray.findIndex(
+      (terrain) => terrain.getProps('id') === terrainId
+    );
+    [terrainArray[terrainIndex], terrainArray[newIndex]] = [
+      terrainArray[newIndex],
+      terrainArray[terrainIndex],
+    ];
+    prepareRender();
+  };
+
+  const loadSavedTerrains = (() => {
+    const savedTerrains = _modules_Storage__WEBPACK_IMPORTED_MODULE_3__["default"].loadTerrains();
+    savedTerrains.forEach((props) => {
+      const terrain = (0,_factories_Terrain__WEBPACK_IMPORTED_MODULE_5__["default"])(props);
+      addTerrain(terrain);
+      _modules_Input__WEBPACK_IMPORTED_MODULE_1__["default"].updateSelectInput(terrain, 'add');
+    });
+  })();
 
   return {
     getTerrainIndex,
@@ -922,7 +933,8 @@ const App = (() => {
 
 /*
   TODO:
-  - fix bug preventing image backgrounds
+  - fix bug preventing image backgrounds (ETA: the end of the world)
+  - find out why the App module is initialized twice
 */
 
 
@@ -966,6 +978,12 @@ const Input = (() => {
 
     switch (updateType) {
       case 'add':
+        if (
+          Array.from(document.querySelectorAll('option')).some(
+            (option) => option.value === entry.getProps('id')
+          )
+        )
+          return;
         const option = document.createElement('option');
         option.value = entry.getProps('id');
         option.textContent = entry.getProps('name');
@@ -1041,17 +1059,19 @@ const Input = (() => {
       terrainIndex++;
     }
 
-    const id = currentSelection ?? (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])();
-    const newTerrain = (0,_factories_Terrain__WEBPACK_IMPORTED_MODULE_2__["default"])({
-      id,
+    const props = {
+      id: currentSelection ?? (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])(),
       name,
+      maxPoints: [],
       minHeight,
       maxHeight,
       steepness,
       smoothness,
       color,
       width,
-    });
+    };
+
+    const newTerrain = (0,_factories_Terrain__WEBPACK_IMPORTED_MODULE_2__["default"])(props);
 
     if (!currentSelection) {
       updateSelectInput(newTerrain, 'add');
@@ -1156,10 +1176,46 @@ const Input = (() => {
 
   return {
     updateTerrainOptions,
+    updateSelectInput,
   };
 })();
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Input);
+
+
+/***/ }),
+
+/***/ "./src/modules/Storage.js":
+/*!********************************!*\
+  !*** ./src/modules/Storage.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const Storage = (() => {
+  const saveTerrains = (terrainArr) => {
+    localStorage.setItem(
+      'generated-terrains',
+      JSON.stringify(terrainArr.map((terrain) => terrain.getProps()))
+    );
+  };
+
+  const loadTerrains = () => {
+    const savedTerrains =
+      JSON.parse(localStorage.getItem('generated-terrains')) ?? [];
+    return savedTerrains;
+  };
+
+  return {
+    saveTerrains,
+    loadTerrains,
+  };
+})();
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Storage);
 
 
 /***/ }),

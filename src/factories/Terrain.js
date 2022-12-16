@@ -1,6 +1,4 @@
 const Terrain = (props) => {
-  props.maxPoints = [];
-
   const getProps = (propName = null) => {
     if (propName) {
       return props[propName];
@@ -32,6 +30,7 @@ const Terrain = (props) => {
   };
 
   const generate = (() => {
+    if (props.maxPoints.length) return;
     let direction = Math.random() < 0.5 ? -1 : 1;
     let currentPosition =
       Math.floor(Math.random() * (props.maxHeight - props.minHeight)) +

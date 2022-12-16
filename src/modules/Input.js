@@ -22,6 +22,12 @@ const Input = (() => {
 
     switch (updateType) {
       case 'add':
+        if (
+          Array.from(document.querySelectorAll('option')).some(
+            (option) => option.value === entry.getProps('id')
+          )
+        )
+          return;
         const option = document.createElement('option');
         option.value = entry.getProps('id');
         option.textContent = entry.getProps('name');
@@ -97,17 +103,19 @@ const Input = (() => {
       terrainIndex++;
     }
 
-    const id = currentSelection ?? uuidv4();
-    const newTerrain = Terrain({
-      id,
+    const props = {
+      id: currentSelection ?? uuidv4(),
       name,
+      maxPoints: [],
       minHeight,
       maxHeight,
       steepness,
       smoothness,
       color,
       width,
-    });
+    };
+
+    const newTerrain = Terrain(props);
 
     if (!currentSelection) {
       updateSelectInput(newTerrain, 'add');
@@ -212,6 +220,7 @@ const Input = (() => {
 
   return {
     updateTerrainOptions,
+    updateSelectInput,
   };
 })();
 
