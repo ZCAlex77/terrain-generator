@@ -5,7 +5,7 @@ import Storage from './modules/Storage';
 import Cell from './factories/Cell';
 import Terrain from './factories/Terrain';
 
-const App = (() => {
+const App = () => {
   // Temporary (or not, the other option is a buggy mess so I'll stick to this for now)
   UI.setGridSize('54', '100');
   UI.resizeCanvas();
@@ -123,12 +123,11 @@ const App = (() => {
     addTerrain,
     getTerrain,
   };
-})();
+};
 
-export default App;
+export default App();
 
 /*
   TODO:
   - fix bug preventing image backgrounds (ETA: the end of the world)
-  - find out why the App module is initialized twice
 */
