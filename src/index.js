@@ -5,7 +5,7 @@ import Storage from './modules/Storage';
 import Cell from './factories/Cell';
 import Terrain from './factories/Terrain';
 
-const App = () => {
+const App = (() => {
   // Temporary (or not, the other option is a buggy mess so I'll stick to this for now)
   UI.setGridSize('54', '100');
   UI.resizeCanvas();
@@ -24,6 +24,8 @@ const App = () => {
       cells[i % numberOfColumns].push(Cell('#fff0'));
     }
   };
+
+  const getCells = () => cells;
 
   generateCells(100 * 54);
 
@@ -45,7 +47,8 @@ const App = () => {
   };
 
   // terrain-related functions
-  const getTerrain = (terrainId) => {
+  const getTerrain = (terrainId = null) => {
+    if (!terrainId) return terrainArray;
     return terrainArray.find((terrain) => terrain.getProps('id') === terrainId);
   };
 
@@ -110,6 +113,7 @@ const App = () => {
       addTerrain(terrain);
       Input.updateSelectInput(terrain, 'add');
     });
+    document.querySelector('#z-index').max = terrainArray.length - 1;
   })();
 
   return {
@@ -122,10 +126,11 @@ const App = () => {
     generateCells,
     addTerrain,
     getTerrain,
+    getCells,
   };
-};
+})();
 
-export default App();
+export default App;
 
 /*
   TODO:
