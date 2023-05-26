@@ -733,45 +733,59 @@ const Terrain = (props) => {
   const setColor = (newColor) => (props.color = newColor);
   const setName = (newName) => (props.name = newName);
 
-  const getRandomHeightChange = () => {
-    if (Math.random() * 101 < props.smoothness) return 0;
-    const randomNumber = Math.floor(Math.random() * props.steepness);
-    const randomNumber2 = Math.random();
+  const generateRandomTerrain = () => {
+    const terrain = [];
+    for (let i = 0; i < 100; i++)
+      terrain.push(
+        Math.floor(Math.random() * (props.maxHeight - props.minHeight)) +
+          props.minHeight
+      );
 
-    if (!randomNumber) return 0;
-    switch (Math.floor(randomNumber / 20)) {
-      case 4:
-        return randomNumber2 < 0.5 ? 4 : 5;
-      case 3:
-        return randomNumber2 < 0.5 ? 3 : 4;
-      case 2:
-        return randomNumber2 < 0.5 ? 2 : 3;
-      case 1:
-        return randomNumber2 < 0.5 ? 1 : 2;
-      case 0:
-        return randomNumber2 < 0.5 ? 0 : 1;
+    return terrain;
+  };
+
+  const linp = (a, b, mu) => {
+    return a * (1 - mu) + b * mu;
+  };
+
+  const cosp = (a, b, mu) => {
+    const mu2 = (1 - Math.cos(mu * Math.PI)) / 2;
+    return a * (1 - mu2) + b * mu2;
+  };
+
+  const interpolateTerrain = (naiveTerrain, sample = 30) => {
+    const terrain = [];
+    const samplePoints = [];
+
+    for (let i = 0; i < naiveTerrain.length; i += sample)
+      samplePoints.push(naiveTerrain[i]);
+
+    for (let i = 0; i < samplePoints.length; i++) {
+      terrain.push(samplePoints[i]);
+
+      for (let j = 0; j < sample - 1; j++) {
+        let mu = (j + 1) / sample;
+        let a = samplePoints[i];
+        let b = samplePoints[(i + 1) % samplePoints.length];
+        let v = cosp(a, b, mu);
+
+        terrain.push(Math.floor(v));
+      }
     }
+
+    terrain.length = 100;
+    return terrain;
   };
 
   const generate = (() => {
     if (props.maxPoints.length) return;
-    let direction = Math.random() < 0.5 ? -1 : 1;
-    let currentPosition =
-      Math.floor(Math.random() * (props.maxHeight - props.minHeight)) +
-      props.minHeight;
 
-    for (let i = 0; i < props.width; i++) {
-      props.maxPoints.push(currentPosition);
-      currentPosition += direction * getRandomHeightChange();
-      if (currentPosition <= props.minHeight) {
-        currentPosition = props.minHeight;
-        direction = -direction;
-      }
-      if (currentPosition >= props.maxHeight) {
-        currentPosition = props.maxHeight;
-        direction = -direction;
-      }
-    }
+    const randomTerrain = generateRandomTerrain();
+    const interpolatedTerrain = interpolateTerrain(
+      randomTerrain,
+      props.sampleSize
+    );
+    props.maxPoints = interpolatedTerrain;
   })();
 
   return {
@@ -829,6 +843,8 @@ const App = (() => {
     }
   };
 
+  const getCells = () => cells;
+
   generateCells(100 * 54);
 
   const prepareRender = () => {
@@ -849,7 +865,8 @@ const App = (() => {
   };
 
   // terrain-related functions
-  const getTerrain = (terrainId) => {
+  const getTerrain = (terrainId = null) => {
+    if (!terrainId) return terrainArray;
     return terrainArray.find((terrain) => terrain.getProps('id') === terrainId);
   };
 
@@ -904,6 +921,7 @@ const App = (() => {
       terrainArray[newIndex],
       terrainArray[terrainIndex],
     ];
+    _modules_Storage__WEBPACK_IMPORTED_MODULE_3__["default"].saveTerrains(terrainArray);
     prepareRender();
   };
 
@@ -914,6 +932,7 @@ const App = (() => {
       addTerrain(terrain);
       _modules_Input__WEBPACK_IMPORTED_MODULE_1__["default"].updateSelectInput(terrain, 'add');
     });
+    document.querySelector('#z-index').max = terrainArray.length - 1;
   })();
 
   return {
@@ -926,6 +945,7 @@ const App = (() => {
     generateCells,
     addTerrain,
     getTerrain,
+    getCells,
   };
 })();
 
@@ -934,7 +954,6 @@ const App = (() => {
 /*
   TODO:
   - fix bug preventing image backgrounds (ETA: the end of the world)
-  - find out why the App module is initialized twice
 */
 
 
@@ -1003,8 +1022,7 @@ const Input = (() => {
     const form = terrainOptionsForm;
     form.minHeight.value = newInputValues.minHeight;
     form.maxHeight.value = newInputValues.maxHeight;
-    form.steepness.value = newInputValues.steepness;
-    form.smoothness.value = newInputValues.smoothness;
+    form.sampleSize.value = newInputValues.sampleSize;
     form.terrainColor.value = newInputValues.color;
     form.terrainName.value = newInputValues.name;
 
@@ -1020,8 +1038,7 @@ const Input = (() => {
       updateTerrainOptions({
         minHeight: 0,
         maxHeight: 1,
-        steepness: 50,
-        smoothness: 0,
+        sampleSize: 30,
         color: '#00ff00',
         name: '',
       });
@@ -1043,14 +1060,13 @@ const Input = (() => {
   terrainOptionsForm.onsubmit = (ev) => {
     ev.preventDefault();
 
-    let minHeight = Number(ev.target.minHeight.value),
-      maxHeight = Number(ev.target.maxHeight.value);
+    let minHeight = parseInt(ev.target.minHeight.value),
+      maxHeight = parseInt(ev.target.maxHeight.value),
+      sampleSize = parseInt(ev.target.sampleSize.value);
 
     if (minHeight > maxHeight) return;
 
-    const steepness = Number(ev.target.steepness.value),
-      smoothness = Number(ev.target.smoothness.value),
-      color = ev.target.terrainColor.value,
+    const color = ev.target.terrainColor.value,
       width = _UI__WEBPACK_IMPORTED_MODULE_0__["default"].getGridSize().columns;
 
     let name = ev.target.terrainName.value;
@@ -1065,8 +1081,7 @@ const Input = (() => {
       maxPoints: [],
       minHeight,
       maxHeight,
-      steepness,
-      smoothness,
+      sampleSize,
       color,
       width,
     };
@@ -1092,7 +1107,9 @@ const Input = (() => {
 
   // -- individual input change events
   zIndexInput.onchange = (ev) => {
+    console.log({ currentSelection });
     if (!currentSelection) return;
+    console.log({ currentSelection }, ev.target.value);
     _index__WEBPACK_IMPORTED_MODULE_1__["default"].moveTerrain(currentSelection, ev.target.value);
   };
 
@@ -1137,16 +1154,6 @@ const Input = (() => {
 
   document.querySelector('#background-color').onchange = (ev) => {
     _UI__WEBPACK_IMPORTED_MODULE_0__["default"].setCanvasBackground(ev.target.value);
-  };
-
-  document.querySelector('#background-image').onchange = (ev) => {
-    if (/.+\.(png|jpg|gif|jpeg)$/.test(ev.target.value)) {
-      ev.target.setCustomValidity('');
-      _UI__WEBPACK_IMPORTED_MODULE_0__["default"].setCanvasBackground("url('" + ev.target.value + "')");
-    } else {
-      ev.target.setCustomValidity('File must end in png, jpg or gif');
-      return;
-    }
   };
 
   document.querySelector('#grid-toggle').onchange = (ev) => {
@@ -1233,7 +1240,6 @@ __webpack_require__.r(__webpack_exports__);
 const UI = (() => {
   const canvas = document.querySelector('canvas'),
     ctx = canvas.getContext('2d'),
-    optionGroups = document.querySelectorAll('.option-group'),
     arrows = document.querySelectorAll('.arrow'),
     options = document.querySelectorAll('.option'),
     selectedTerrainOptions = document.querySelectorAll('.terrain-selected');
@@ -1242,7 +1248,6 @@ const UI = (() => {
   let columns = null;
   let rows = null;
   let isGridVisible = false;
-  let lastOpenOption = 0;
 
   const toggleSelectedTerrainOptions = (state) => {
     selectedTerrainOptions.forEach(
@@ -1331,6 +1336,8 @@ const UI = (() => {
     if (cells) renderCells(cells);
     if (isGridVisible) drawGrid();
   };
+
+  showOption(1);
 
   return {
     toggleSelectedTerrainOptions,
