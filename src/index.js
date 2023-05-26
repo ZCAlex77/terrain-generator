@@ -132,8 +132,3 @@ const App = (() => {
 })();
 
 export default App;
-
-/*
-  TODO:
-  - fix bug preventing image backgrounds (ETA: the end of the world)
-*/
