@@ -103,6 +103,7 @@ const App = (() => {
       terrainArray[newIndex],
       terrainArray[terrainIndex],
     ];
+    Storage.saveTerrains(terrainArray);
     prepareRender();
   };
 

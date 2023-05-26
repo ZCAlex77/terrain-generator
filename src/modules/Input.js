@@ -47,8 +47,7 @@ const Input = (() => {
     const form = terrainOptionsForm;
     form.minHeight.value = newInputValues.minHeight;
     form.maxHeight.value = newInputValues.maxHeight;
-    form.steepness.value = newInputValues.steepness;
-    form.smoothness.value = newInputValues.smoothness;
+    form.sampleSize.value = newInputValues.sampleSize;
     form.terrainColor.value = newInputValues.color;
     form.terrainName.value = newInputValues.name;
 
@@ -64,8 +63,7 @@ const Input = (() => {
       updateTerrainOptions({
         minHeight: 0,
         maxHeight: 1,
-        steepness: 50,
-        smoothness: 0,
+        sampleSize: 30,
         color: '#00ff00',
         name: '',
       });
@@ -87,14 +85,13 @@ const Input = (() => {
   terrainOptionsForm.onsubmit = (ev) => {
     ev.preventDefault();
 
-    let minHeight = Number(ev.target.minHeight.value),
-      maxHeight = Number(ev.target.maxHeight.value);
+    let minHeight = parseInt(ev.target.minHeight.value),
+      maxHeight = parseInt(ev.target.maxHeight.value),
+      sampleSize = parseInt(ev.target.sampleSize.value);
 
     if (minHeight > maxHeight) return;
 
-    const steepness = Number(ev.target.steepness.value),
-      smoothness = Number(ev.target.smoothness.value),
-      color = ev.target.terrainColor.value,
+    const color = ev.target.terrainColor.value,
       width = UI.getGridSize().columns;
 
     let name = ev.target.terrainName.value;
@@ -109,8 +106,7 @@ const Input = (() => {
       maxPoints: [],
       minHeight,
       maxHeight,
-      steepness,
-      smoothness,
+      sampleSize,
       color,
       width,
     };
@@ -136,7 +132,9 @@ const Input = (() => {
 
   // -- individual input change events
   zIndexInput.onchange = (ev) => {
+    console.log({ currentSelection });
     if (!currentSelection) return;
+    console.log({ currentSelection }, ev.target.value);
     App.moveTerrain(currentSelection, ev.target.value);
   };
 
@@ -181,16 +179,6 @@ const Input = (() => {
 
   document.querySelector('#background-color').onchange = (ev) => {
     UI.setCanvasBackground(ev.target.value);
-  };
-
-  document.querySelector('#background-image').onchange = (ev) => {
-    if (/.+\.(png|jpg|gif|jpeg)$/.test(ev.target.value)) {
-      ev.target.setCustomValidity('');
-      UI.setCanvasBackground("url('" + ev.target.value + "')");
-    } else {
-      ev.target.setCustomValidity('File must end in png, jpg or gif');
-      return;
-    }
   };
 
   document.querySelector('#grid-toggle').onchange = (ev) => {

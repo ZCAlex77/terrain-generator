@@ -18,9 +18,6 @@
         <input type="radio" name="background" class="background-choice" value="color" checked>
         <label for="bg-color">color</label>
         <input type="color" name="background-color" id="background-color">
-        <input type="radio" name="background" class="background-choice" value="image">
-        <label for="bg-image">image</label>
-        <input type="text" name="background-image" id="background-image" placeholder="Enter url">
       </div>
       <h3>Grid</h3>
       <div>
@@ -50,12 +47,8 @@
           <label for="minHeight">Minimum height</label>
         </div>
         <div>
-          <label for="steepness">Steepness</label>
-          <input type="range" name="steepness" min="0" max="100" value="50">
-        </div>
-        <div>
-          <label for="smoothness">Smoothness</label>
-          <input type="range" name="smoothness" min="0" max="100" value="0">
+          <input type="number" name="sampleSize" min="1" max="50" value="30">
+          <label for="sampleSize">Sample size</label>
         </div>
         <div>
           <label for="terrainColor">Terrain color</label>

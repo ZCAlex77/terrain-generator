@@ -1,7 +1,6 @@
 const UI = (() => {
   const canvas = document.querySelector('canvas'),
     ctx = canvas.getContext('2d'),
-    optionGroups = document.querySelectorAll('.option-group'),
     arrows = document.querySelectorAll('.arrow'),
     options = document.querySelectorAll('.option'),
     selectedTerrainOptions = document.querySelectorAll('.terrain-selected');
@@ -10,7 +9,6 @@ const UI = (() => {
   let columns = null;
   let rows = null;
   let isGridVisible = false;
-  let lastOpenOption = 0;
 
   const toggleSelectedTerrainOptions = (state) => {
     selectedTerrainOptions.forEach(
@@ -99,6 +97,8 @@ const UI = (() => {
     if (cells) renderCells(cells);
     if (isGridVisible) drawGrid();
   };
+
+  showOption(1);
 
   return {
     toggleSelectedTerrainOptions,
